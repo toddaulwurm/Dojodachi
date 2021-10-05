@@ -51,7 +51,7 @@ namespace Dojodachi.Controllers
             {
                 return View("Win");
             }
-            else if(Fullness==0 || Happiness==0)
+            else if(Fullness<=0 || Happiness<=0)
             {
                 return View("Lose");
             }
