@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-center">
+
+
+    <h1 class="display-4">@ViewBag.Message</h1>
+    <img style="height: 70px" src="https://m.media-amazon.com/images/I/41Ab15UdSjL._AC_.jpg" alt="Dead Mochi">
+    <p>Happiness: @ViewBag.Happiness</p>
+    <p>Fullness: @ViewBag.Fullness</p>
+    <p>Energy: @ViewBag.Energy</p>
+    <p>Meals: @ViewBag.Meals</p>
+</div>
+<hr>
+<br>
+    <form asp-action="reset" method="post" asp-controller="Home">
+        <input type="submit" class="btn btn-secondary btn-sm mt-2" value="Try Again...?">
+    </form>

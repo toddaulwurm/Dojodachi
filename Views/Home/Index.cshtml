@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-center">
+
+
+    <h1 class="display-4">Meet your Dojodachi, Mochi!</h1>
+    <img style="height: 70px" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/364fc4dd-59ca-4b2c-86ff-9d8e42dff048/d1nnskh-4c86b486-2e66-48fc-8825-ae0fad269fb7.png/v1/fill/w_1024,h_1024,strp/mochi_character_decal_by_itachi_roxas_d1nnskh-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiJcL2ZcLzM2NGZjNGRkLTU5Y2EtNGIyYy04NmZmLTlkOGU0MmRmZjA0OFwvZDFubnNraC00Yzg2YjQ4Ni0yZTY2LTQ4ZmMtODgyNS1hZTBmYWQyNjlmYjcucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.-J2X6GmAECSyRNAJ4obB0XiIGez09HMwZm1u3nLEa_I" alt="Mochi">
+    <h2>Message: @ViewBag.Message</h2>
+    <p>Happiness: @ViewBag.Happiness</p>
+    <p>Fullness: @ViewBag.Fullness</p>
+    <p>Energy: @ViewBag.Energy</p>
+    <p>Meals: @ViewBag.Meals</p>
+
+    <div class="d-flex justify-content-center">
+        <form asp-action="play" method="post" asp-controller="Home">
+            <input type="submit" class="btn btn-warning mt-3 mr-2" value="Play">
+        </form>
+
+        <form asp-action="feed" method="post" asp-controller="Home">
+            <input type="submit" class="btn btn-success mt-3 mr-2" value="Feed">
+        </form>
+
+        <form asp-action="work" method="post" asp-controller="Home">
+            <input type="submit" class="btn btn-primary mt-3 mr-2" value="Work">
+        </form>
+
+        <form asp-action="sleep" method="post" asp-controller="Home">
+            <input type="submit" class="btn btn-dark mt-3 mr-2" value="Sleep">
+        </form>
+    </div>
+</div>
+<hr>
+<br>
+    <form asp-action="reset" method="post" asp-controller="Home">
+        <input type="submit" class="btn btn-secondary btn-sm mt-2" value="Reset and KILL Mochi? :(">
+    </form>
