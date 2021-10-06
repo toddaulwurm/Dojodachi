@@ -51,7 +51,7 @@ namespace Dojodachi.Controllers
             {
                 return View("Win");
             }
-            else if(Fullness<=0 || Happiness<=0)
+            else if(Fullness<=0 || Happiness<=0 || Energy<=0)
             {
                 return View("Lose");
             }
@@ -175,8 +175,31 @@ namespace Dojodachi.Controllers
             {
                 HttpContext.Session.SetString("Message", "MOCHI DIED OF EXHAUSTION WHILE MAKING THEIR PASTA. >:( GAMEOVER");
                 string Message = HttpContext.Session.GetString("Message");
-                return RedirectToAction("Index");
+                return RedirectToAction("Lose");
             }
+        }
+        [HttpGet("Lose")]
+        public IActionResult Lose()
+        {
+            int? Happiness = HttpContext.Session.GetInt32("Happiness");
+            int? Fullness = HttpContext.Session.GetInt32("Fullness");
+            int? Energy = HttpContext.Session.GetInt32("Energy");
+            int? Meals = HttpContext.Session.GetInt32("Meals");
+            ViewBag.Message = HttpContext.Session.GetString("Message");
+
+            HttpContext.Session.SetInt32("Happiness", (int)Happiness);
+            ViewBag.Happiness = HttpContext.Session.GetInt32("Happiness");
+                        
+            HttpContext.Session.SetInt32("Fullness", (int)Fullness);
+            ViewBag.Fullness = HttpContext.Session.GetInt32("Fullness");
+                        
+            HttpContext.Session.SetInt32("Energy", (int)Energy);
+            ViewBag.Energy = HttpContext.Session.GetInt32("Energy");
+                        
+            HttpContext.Session.SetInt32("Meals", (int)Meals);
+            ViewBag.Meals = HttpContext.Session.GetInt32("Meals");
+
+            return View();
         }
         [HttpPost("sleep")]
         public IActionResult Sleep()
