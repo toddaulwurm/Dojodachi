@@ -31,21 +31,17 @@ namespace Dojodachi.Controllers
                 Happiness =20;
                 Fullness =20;
                 Energy =50;
-                Meals= 3;
+                Meals= 3;            
+                HttpContext.Session.SetInt32("Happiness", (int)Happiness);
+                HttpContext.Session.SetInt32("Fullness", (int)Fullness);
+                HttpContext.Session.SetInt32("Energy", (int)Energy);
+                HttpContext.Session.SetInt32("Meals", (int)Meals);
             }
 
             ViewBag.Message = HttpContext.Session.GetString("Message");
-
-            HttpContext.Session.SetInt32("Happiness", (int)Happiness);
             ViewBag.Happiness = HttpContext.Session.GetInt32("Happiness");
-                        
-            HttpContext.Session.SetInt32("Fullness", (int)Fullness);
-            ViewBag.Fullness = HttpContext.Session.GetInt32("Fullness");
-                        
-            HttpContext.Session.SetInt32("Energy", (int)Energy);
-            ViewBag.Energy = HttpContext.Session.GetInt32("Energy");
-                        
-            HttpContext.Session.SetInt32("Meals", (int)Meals);
+            ViewBag.Fullness = HttpContext.Session.GetInt32("Fullness");        
+            ViewBag.Energy = HttpContext.Session.GetInt32("Energy");        
             ViewBag.Meals = HttpContext.Session.GetInt32("Meals");
             if(Energy>=100 && Fullness>=100 && Happiness>=100)
             {
@@ -72,11 +68,11 @@ namespace Dojodachi.Controllers
                     int happy = rand.Next(5,11);
                     Happiness+=happy;
                     HttpContext.Session.SetInt32("Happiness", (int)Happiness);
-                    ViewBag.Happiness = HttpContext.Session.GetInt32("Happiness");
+                    ViewBag.Happiness = Happiness;
 
                     Energy-=5;
                     HttpContext.Session.SetInt32("Energy", (int)Energy);
-                    ViewBag.Energy = HttpContext.Session.GetInt32("Energy");
+                    ViewBag.Energy = Energy;
 
                     HttpContext.Session.SetString("Message", "Mochi Had Fun!!!!");
                     string Message = HttpContext.Session.GetString("Message");
@@ -86,11 +82,11 @@ namespace Dojodachi.Controllers
                 else
                 {
                     HttpContext.Session.SetInt32("Happiness", (int)Happiness);
-                    ViewBag.Happiness = HttpContext.Session.GetInt32("Happiness");
+                    ViewBag.Happiness = Happiness;
 
                     Energy-=5;
                     HttpContext.Session.SetInt32("Energy", (int)Energy);
-                    ViewBag.Energy = HttpContext.Session.GetInt32("Energy");
+                    ViewBag.Energy = Energy;
 
                     HttpContext.Session.SetString("Message", "UGH MOCHI HATES GOLF!!!!");
                     string Message = HttpContext.Session.GetString("Message");
@@ -102,7 +98,7 @@ namespace Dojodachi.Controllers
             {
                 Energy-=5;
                 HttpContext.Session.SetInt32("Energy", (int)Energy);
-                ViewBag.Energy = HttpContext.Session.GetInt32("Energy");
+                ViewBag.Energy = Energy;
                 HttpContext.Session.SetString("Message", "Mochi DIED OF EXHAUSTION YOU ASSHOLE! GAMEOVER...");
                 string Message = HttpContext.Session.GetString("Message");
                 return RedirectToAction("Index");
@@ -122,10 +118,10 @@ namespace Dojodachi.Controllers
                     int full = rand.Next(5,11);
                     Fullness+=full;
                     HttpContext.Session.SetInt32("Fullness", (int)Fullness);
-                    ViewBag.Fullness = HttpContext.Session.GetInt32("Fullness");
+                    ViewBag.Fullness = Fullness;
                     Meals--;
                     HttpContext.Session.SetInt32("Meals", (int)Meals);
-                    ViewBag.Meals = HttpContext.Session.GetInt32("Meals");
+                    ViewBag.Meals = Meals;
 
                     HttpContext.Session.SetString("Message", "YUMMY!!!!");
                     string Message = HttpContext.Session.GetString("Message");
@@ -134,10 +130,10 @@ namespace Dojodachi.Controllers
                 else
                 {
                     HttpContext.Session.SetInt32("Fullness", (int)Fullness);
-                    ViewBag.Fullness = HttpContext.Session.GetInt32("Fullness");
+                    ViewBag.Fullness = Fullness;
                     Meals--;
                     HttpContext.Session.SetInt32("Meals", (int)Meals);
-                    ViewBag.Meals = HttpContext.Session.GetInt32("Meals");
+                    ViewBag.Meals = Meals;
 
                     HttpContext.Session.SetString("Message", "YUCKY!!! MOCHI SPIT IT OUT");
                     string Message = HttpContext.Session.GetString("Message");
@@ -162,10 +158,10 @@ namespace Dojodachi.Controllers
                 int productive = rand.Next(1,4);
                 Energy-=5;
                 HttpContext.Session.SetInt32("Energy", (int)Energy);
-                ViewBag.Energy = HttpContext.Session.GetInt32("Energy");
+                ViewBag.Energy = Energy;
                 Meals+=productive;
                 HttpContext.Session.SetInt32("Meals", (int)Meals);
-                ViewBag.Meals = HttpContext.Session.GetInt32("Meals");
+                ViewBag.Meals = Meals;
 
                 HttpContext.Session.SetString("Message", "Mochi made some bomb-ass meal-prep. Pasta FOR DAYS. <3");
                 string Message = HttpContext.Session.GetString("Message");
@@ -188,16 +184,16 @@ namespace Dojodachi.Controllers
             ViewBag.Message = HttpContext.Session.GetString("Message");
 
             HttpContext.Session.SetInt32("Happiness", (int)Happiness);
-            ViewBag.Happiness = HttpContext.Session.GetInt32("Happiness");
+            ViewBag.Happiness = Happiness;
                         
             HttpContext.Session.SetInt32("Fullness", (int)Fullness);
-            ViewBag.Fullness = HttpContext.Session.GetInt32("Fullness");
+            ViewBag.Fullness = Fullness;
                         
             HttpContext.Session.SetInt32("Energy", (int)Energy);
-            ViewBag.Energy = HttpContext.Session.GetInt32("Energy");
+            ViewBag.Energy = Energy;
                         
             HttpContext.Session.SetInt32("Meals", (int)Meals);
-            ViewBag.Meals = HttpContext.Session.GetInt32("Meals");
+            ViewBag.Meals = Energy;
 
             return View();
         }
@@ -211,13 +207,13 @@ namespace Dojodachi.Controllers
             {
                 Energy+=15;
                 HttpContext.Session.SetInt32("Energy", (int)Energy);
-                ViewBag.Energy = HttpContext.Session.GetInt32("Energy");
+                ViewBag.Energy = Energy;
                 Happiness-=5;
                 HttpContext.Session.SetInt32("Happiness", (int)Happiness);
-                ViewBag.Happiness = HttpContext.Session.GetInt32("Happiness");
+                ViewBag.Happiness = Happiness;
                 Fullness-=5;
                 HttpContext.Session.SetInt32("Fullness", (int)Fullness);
-                ViewBag.Fullness = HttpContext.Session.GetInt32("Fullness");
+                ViewBag.Fullness = Fullness;
 
                 HttpContext.Session.SetString("Message", "Mochi had a splendid naptime!!!!! :)");
                 string Message = HttpContext.Session.GetString("Message");
@@ -227,10 +223,10 @@ namespace Dojodachi.Controllers
             {
                 Happiness-=5;
                 HttpContext.Session.SetInt32("Happiness", (int)Happiness);
-                ViewBag.Happiness = HttpContext.Session.GetInt32("Happiness");
+                ViewBag.Happiness = Happiness;
                 Fullness-=5;
                 HttpContext.Session.SetInt32("Fullness", (int)Fullness);
-                ViewBag.Fullness = HttpContext.Session.GetInt32("Fullness");
+                ViewBag.Fullness = Fullness;
                 HttpContext.Session.SetString("Message", "MOCHI DIED OF SADNESS/HUNGER IN THEIR SLEEP. RIP MOCHI. GAMEOVER!");
                 string Message = HttpContext.Session.GetString("Message");
                 return RedirectToAction("Index");
